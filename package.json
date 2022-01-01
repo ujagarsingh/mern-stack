@@ -1,0 +1,15 @@
+{
+  "name": "noteszipper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon backend/server.js port 5000"
+  },
+  "author": "ujagar singh",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2"
+  }
+}
