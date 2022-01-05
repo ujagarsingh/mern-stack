@@ -2,7 +2,8 @@ const express = require('express');
 const notes = require('./data/notes')
 const connectDB = require('./config/db');
 const dotenv = require("dotenv");
-const userRoutes = require('./routes/userRoutes')
+const userRoutes = require('./routes/userRoutes');
+const { notFound, errorHandler } = require('./middleWares/errorMiddleware');
 
 const app = express();
 dotenv.config();
@@ -24,6 +25,9 @@ app.use('/api/users', userRoutes)
 //     const note = notes.find((n) => n._id === req.params.id)
 //     res.send(note)
 // })
+
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, console.log(`SERVER STARTED ON PORT ${PORT}`))
