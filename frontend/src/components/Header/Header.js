@@ -1,8 +1,9 @@
 import React from 'react'
 import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 function Header() {
+	const navigate = useNavigate()
 	return (
 		<>
 			<Navbar bg="light" expand="sm">
@@ -31,7 +32,10 @@ function Header() {
 							<NavLink className={"nav-link"} to="/mynotes">My Notes</NavLink>
 							<NavDropdown title="User Name" id="navbarScrollingDropdown">
 								<NavLink className={"dropdown-item"} to="/myprofile">My Profile</NavLink>
-								<NavDropdown.Item>Logout</NavDropdown.Item>
+								<NavDropdown.Item onClick={() => {
+									window.localStorage.removeItem("userInfo");
+									navigate("/")
+								}}>Logout</NavDropdown.Item>
 							</NavDropdown>
 						</Nav>
 					</Navbar.Collapse>
